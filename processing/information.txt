@@ -1,0 +1,9 @@
+
+1. 프로세싱 개발툴 다운로드
+https://processing.org/download
+
+2. 압축풀어서 실행
+백신에서 차단하면 차단 풀어주고 실행
+
+3.heart 소스코드 출처
+https://diyusthad.com/2018/07/how-to-draw-heart-using-processing.html

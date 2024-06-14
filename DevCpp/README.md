@@ -51,3 +51,10 @@ C:\SDL2-2.0.9\i686-w64-mingw32\bin\SDL2.dll 파일을 복사해서, 프로젝트
 아래 참고 사이트 에 소스코드 있음.
 
 SDL2 사용법 참고 : https://blog.naver.com/tepet/221406851288
+
+* Dev-cpp 에서 SDL2 사용하는방법은 아직 잘 안되는 상황임.
+
+VC 에서 SDL2 사용하는 방법
+
+https://wikidocs.net/194523
+

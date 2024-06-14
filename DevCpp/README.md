@@ -47,6 +47,7 @@ C:\SDL2-2.0.9\i686-w64-mingw32\lib
 C:\SDL2-2.0.9\i686-w64-mingw32\bin\SDL2.dll 파일을 복사해서, 프로젝트 실행폴더에 복붙 하면 준비 끝.
 
 6. 코드 실행해보기
+7. 
 아래 참고 사이트 에 소스코드 있음.
 
 SDL2 사용법 참고 : https://blog.naver.com/tepet/221406851288

@@ -11,4 +11,5 @@ https://sourceforge.net/projects/lazarus/
 
 
 [03] 컴파일 결과물 - 아직은...
+<img src='https://github.com/zhuyun-lixun/drawHeart/blob/main/Lazarus/2024-06-18_lazarus_sc.gif' />
 

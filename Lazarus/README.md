@@ -11,6 +11,6 @@ chatGPT 의 많은 도움으로 컨버팅 했음.
 https://sourceforge.net/projects/lazarus/
 
 
-[03] 컴파일 결과물 - 아직은...
-<img src='https://github.com/zhuyun-lixun/drawHeart/blob/main/Lazarus/2024-06-18_lazarus_sc.gif' />
+[03] 컴파일 결과물 
+<img src='https://github.com/zhuyun-lixun/drawHeart/blob/main/Lazarus/2024-06-18_lazarus_sc2.gif' />
 

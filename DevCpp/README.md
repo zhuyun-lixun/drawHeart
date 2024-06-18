@@ -11,6 +11,10 @@ chatGPT 의 많은 도움으로 컨버팅 했음.
 
 https://sourceforge.net/projects/embarcadero-devcpp/
 
+새프로젝트->윈도우애플리케이션
+
+win32 api 소스코드 
+
 [03] 컴파일 결과물
 <img src='https://github.com/zhuyun-lixun/drawHeart/blob/main/DevCpp/2024-06-18_dev-cpp_sc.gif' />
 

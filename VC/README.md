@@ -1,8 +1,20 @@
-[01] 준비물
+[01] 소스코드 설명
+
+C언어 원본소스코드 출처 : https://www.bilibili.com/read/cv20048480/
+
+C언어 소스코드를 컨버팅한 CSharp 소스코드를 컨버팅 했음.
+
+chatGPT 의 많은 도움으로 컨버팅 했음.
+
+
+[02] 준비물
+
 1. Visual Studio Community 2019 버전 ( 에서 VC++ 윈도우즈 데스크탑 관련 체크해서 설치)
+2. 
 다운로드 파일 : https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16   
 
-2. SDL2 라이브러리 설치 (최신 버전으로 도 가능할듯)
+3. SDL2 라이브러리 설치 (최신 버전으로 도 가능할듯)
+
 출처 : https://wikidocs.net/194523
 SDL 프로그램 컴파일 및 링크
 
@@ -19,7 +31,9 @@ SDL 프로그램 컴파일 및 링크
 
 여기서는 SDL 라이브러리만을 프로젝트에 링크하는 방법만 설명했다. 다른 SDL 확장 라이브러리도 위와 같은 절차를 따르면 프로젝트에 포함시킬 수 있다. 
 
-3. 주의사항
+4. 주의사항
+
 SDL2 라이브러리를 사용했으면 컴파일된 실행파일과 같은 폴더에 SDL2.dll 파일이 있어야 정상적으로 실행됨.
 
-[02] 컴파일 결과물
+[03] 컴파일 결과물
+<img src='https://github.com/zhuyun-lixun/drawHeart/blob/main/VC/2024-06-18_vc-sdl2_sc.gif' />

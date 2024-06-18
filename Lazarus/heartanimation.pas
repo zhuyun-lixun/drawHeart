@@ -108,7 +108,7 @@ begin
       Inc(index);
     end;
 
-    radian := radian + 0.1;
+    radian := radian + 0.005;// 0.1;
   end;
 
   index := 0;

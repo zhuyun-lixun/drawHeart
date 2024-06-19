@@ -3,7 +3,7 @@
 
 대해 다양한 (?) 프로그래밍 언어로 구현 예정
 
-
+[![점연아,온난니](https://img.youtube.com/vi/SdUPOZdRxtc/0.jpg)](https://youtu.be/SdUPOZdRxtc)
 
 ---------------------------------------
 github 웹에서 작업시 폴더 생성하는 방법

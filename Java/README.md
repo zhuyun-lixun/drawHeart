@@ -12,4 +12,4 @@ https://jdk.java.net/java-se-ri/18
 
 
 [03] 컴파일 결과물 
-< img src='https://github.com/zhuyun-lixun/drawHeart/blob/main/Java/2024-06-19_java_sc.gif' />
+<img src='https://github.com/zhuyun-lixun/drawHeart/blob/main/Java/2024-06-19_java_sc.gif' />

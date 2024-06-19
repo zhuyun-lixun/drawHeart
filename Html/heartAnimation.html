@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Animation</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="heartCanvas" width="1200" height="800"></canvas>
+    <script>
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const SCREEN_WIDTH = canvas.width;
+        const SCREEN_HEIGHT = canvas.height;
+        const PI = Math.PI;
+        const AVERAGE_DISTANCE = 0.162;
+        const HEART_POINTS = 506;
+        const HEART_CIRCLES = 210;
+        const ANIMATION_FRAMES = 20;
+
+        const colors = [
+            `rgb(${255}, ${Math.min(32 + 204, 255)}, 83)`,
+            `rgb(${252}, ${Math.min(222 + 204, 255)}, 250)`,
+            `rgb(${255}, ${Math.min(0 + 153, 255)}, ${Math.min(0 + 204, 255)})`,
+            `rgb(${255}, ${Math.min(0 + 153, 255)}, ${Math.min(0 + 204, 255)})`,
+            `rgb(${255}, 2, ${Math.min(2 + 204, 255)})`,
+            `rgb(${255}, ${Math.min(0 + 153, 255)}, ${Math.min(8 + 204, 255)})`,
+            `rgb(${255}, 5, ${Math.min(5 + 204, 255)})`
+        ];
+
+        class MyPoint {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+            }
+        }
+
+        const originPoints = new Array(HEART_POINTS);
+        const points = [];
+        const images = new Array(ANIMATION_FRAMES);
+        let currentFrame = 0;
+        let extend = true;
+
+        function screenX(x) {
+            return x + SCREEN_WIDTH / 2;
+        }
+
+        function screenY(y) {
+            return -y + SCREEN_HEIGHT / 2;
+        }
+
+        function createRandom(x1, x2) {
+            return Math.floor(Math.random() * (x2 - x1 + 1)) + x1;
+        }
+
+        function createData() {
+            let index = 0;
+            let x1 = 0, y1 = 0, x2, y2;
+
+            for (let radian = 0.1; radian <= 2 * PI; radian += 0.005) {
+                x2 = 16 * Math.pow(Math.sin(radian), 3);
+                y2 = 13 * Math.cos(radian) - 5 * Math.cos(2 * radian) - 2 * Math.cos(3 * radian) - Math.cos(4 * radian);
+
+                const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+                if (distance > AVERAGE_DISTANCE) {
+                    x1 = x2;
+                    y1 = y2;
+                    originPoints[index] = new MyPoint(x2, y2, 'black');
+                    index++;
+                }
+            }
+
+            index = 0;
+            for (let size = 0.1; size <= 20; size += 0.1) {
+                const successP = 1 / (1 + Math.pow(Math.E, 8 - size / 2));
+
+                for (let i = 0; i < HEART_POINTS; ++i) {
+                    if (successP > createRandom(0, 100) / 100.0) {
+                        const randomColor = colors[createRandom(0, 6)];
+                        points.push(new MyPoint(size * originPoints[i].x + createRandom(-4, 4), size * originPoints[i].y + createRandom(-4, 4), randomColor));
+                        index++;
+                    }
+                }
+            }
+
+            const pointsSize = index;
+
+            for (let frame = 0; frame < ANIMATION_FRAMES; ++frame) {
+                images[frame] = document.createElement('canvas');
+                images[frame].width = SCREEN_WIDTH;
+                images[frame].height = SCREEN_HEIGHT;
+                const g2d = images[frame].getContext('2d');
+                g2d.fillStyle = 'black';
+                g2d.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+                points.forEach(point => {
+                    let x = point.x, y = point.y;
+                    const distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+                    const distanceIncrease = -0.0009 * distance * distance + 0.35714 * distance + 5;
+                    const xIncrease = distanceIncrease * x / distance / ANIMATION_FRAMES;
+                    const yIncrease = distanceIncrease * y / distance / ANIMATION_FRAMES;
+
+                    point.x += xIncrease;
+                    point.y += yIncrease;
+
+                    g2d.fillStyle = point.color;
+                    g2d.fillRect(screenX(point.x), screenY(point.y), 1, 1);
+                });
+
+                for (let size = 17; size < 23; size += 0.3) {
+                    for (let i = 0; i < HEART_POINTS; ++i) {
+                        if ((createRandom(0, 100) / 100.0 > 0.6 && size >= 20) || (size < 20 && createRandom(0, 100) / 100.0 > 0.95)) {
+                            let x, y;
+                            if (size >= 20) {
+                                x = originPoints[i].x * size + createRandom(-frame * frame / 5 - 15, frame * frame / 5 + 15);
+                                y = originPoints[i].y * size + createRandom(-frame * frame / 5 - 15, frame * frame / 5 + 15);
+                            } else {
+                                x = originPoints[i].x * size + createRandom(-5, 5);
+                                y = originPoints[i].y * size + createRandom(-5, 5);
+                            }
+                            g2d.fillStyle = colors[createRandom(0, 6)];
+                            g2d.fillRect(screenX(x), screenY(y), 1, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        function updateFrame() {
+            if (extend) {
+                if (currentFrame == ANIMATION_FRAMES - 1) {
+                    extend = false;
+                } else {
+                    currentFrame++;
+                }
+            } else {
+                if (currentFrame == 0) {
+                    extend = true;
+                } else {
+                    currentFrame--;
+                }
+            }
+        }
+
+        function draw() {
+            ctx.drawImage(images[currentFrame], 0, 0);
+        }
+
+        function animate() {
+            updateFrame();
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        createData();
+        animate();
+    </script>
+</body>
+</html>
